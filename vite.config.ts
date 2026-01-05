@@ -1,12 +1,9 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
+// vite.config.ts
 export default defineConfig({
   plugins: [react()],
   server: {
     host: '0.0.0.0',
     port: 5173,
-    // 添加这一行，允许 Zeabur 的域名访问
-    allowedHosts: ['ltb-design.zeabur.app'] 
+    allowedHosts: true, // 或者写 ['ltb-design.zeabur.app']
   }
 })
