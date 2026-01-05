@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Menu, X, Moon, Sun, ArrowRight, ChevronDown } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Moon, Sun, ArrowRight } from 'lucide-react';
 
 const Button = React.forwardRef<HTMLButtonElement, React.ButtonHTMLAttributes<HTMLButtonElement> & { variant?: 'default' | 'outline' | 'ghost', size?: 'sm' | 'md' | 'lg' }>(
   ({ className, variant = 'default', size = 'md', ...props }, ref) => {
