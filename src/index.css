@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* 强制背景黑底，防止切换页面闪白 */
+/* 强制背景黑底，防止白屏 */
 :root, body {
   background-color: #000000;
   margin: 0;
