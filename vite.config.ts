@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 5173,
-    // 关键：允许 Zeabur 的域名访问
-    allowedHosts: true 
+    // 添加这一行，允许 Zeabur 的域名访问
+    allowedHosts: ['ltb-design.zeabur.app'] 
   }
 })
