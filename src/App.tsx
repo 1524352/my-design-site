@@ -41,24 +41,23 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // 简单的暗黑模式切换模拟
   const toggleTheme = () => {
     setIsDark(!isDark);
     document.documentElement.classList.toggle('dark');
   };
 
+  // 修改点：导航栏链接更新，去掉了客户评价，加上了合作流程
   const navLinks = [
     { name: '关于我们', path: '/#about' },
     { name: '服务项目', path: '/#services' },
     { name: '作品集', path: '/#portfolio' },
-    { name: '客户评价', path: '/#testimonials' },
+    { name: '合作流程', path: '/#process' },
   ];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-white/10' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
             <div className="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:rotate-12 transition-transform">
               H
@@ -68,7 +67,6 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a key={link.name} href={link.path} className="text-slate-300 hover:text-white hover:scale-105 transition-all text-sm font-medium">
@@ -86,7 +84,6 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center gap-4">
              <button onClick={toggleTheme} className="p-2 text-slate-300">
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
@@ -98,7 +95,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
           <motion.div 
@@ -139,7 +135,7 @@ const Footer = () => (
       <div>
         <h3 className="text-white font-semibold mb-4">快速链接</h3>
         <ul className="space-y-2 text-sm">
-          {['关于我们', '服务项目', '作品集', '客户评价', '联系我们'].map(item => (
+          {['关于我们', '服务项目', '作品集', '合作流程', '联系我们'].map(item => (
             <li key={item}><a href="#" className="hover:text-white transition-colors">{item}</a></li>
           ))}
         </ul>
@@ -165,7 +161,6 @@ const HomePage = () => {
   const [heroText, setHeroText] = useState('');
   const fullText = "AI 遇见创意\n智能重新定义设计";
 
-  // 打字机效果
   useEffect(() => {
     let i = 0;
     const timer = setInterval(() => {
@@ -187,7 +182,7 @@ const HomePage = () => {
     { icon: Sparkles, title: 'AI 辅助品牌设计', desc: '结合 AI 快速生成多套品牌方案，人类设计师精修优化。', features: ['AI Logo 创意生成', '智能 VI 系统', '品牌策略分析', '风格迁移'], highlight: '⚡ AI 将创意探索时间缩短 80%' },
     { icon: Package, title: 'AI 驱动包装设计', desc: 'AI 分析市场趋势，生成数据驱动的包装方案。', features: ['AI 趋势分析', '3D 渲染预览', '智能结构优化', '系列化自动生成'], highlight: '🎯 分析 1000+ 竞品案例' },
     { icon: ShoppingBag, title: 'AI 电商设计', desc: '自动生成详情页、智能抠图，效率提升 10 倍。', features: ['AI 详情页生成', '智能抠图', '批量处理', 'A/B 测试方案'], highlight: '🚀 3天缩短到3小时' },
-    { icon: Camera, title: 'AI 增强摄影', desc: '智能修图、调色、场景扩展，每张都是大片。', features: ['AI 智能修图', '精准调色', '产品抠图', '场景扩展'], highlight: '✨ 后期时间缩短到小时' },
+    { icon: Camera, title: 'AI 智能修图', desc: '智能修图、调色、场景扩展，每张都是大片。', features: ['AI 智能修图', '精准调色', '产品抠图', '场景扩展'], highlight: '✨ 后期时间缩短到小时' },
     { icon: Video, title: 'AI 视频制作', desc: '自动剪辑、配乐、字幕，短视频快人一步。', features: ['AI 自动剪辑', '智能配乐', '自动字幕', '风格滤镜'], highlight: '⏱️ 周期从周缩短到天' },
     { icon: Heart, title: 'AI 辅助婚纱摄影', desc: '实时预览风格、智能构图、虚拟梦幻场景。', features: ['AI 风格预览', '智能构图', '虚拟场景', '自动精修'], highlight: '🌟 影棚内"穿越"全球' },
   ];
@@ -196,11 +191,10 @@ const HomePage = () => {
     <div className="bg-slate-950 text-slate-100 min-h-screen font-sans selection:bg-indigo-500 selection:text-white">
       {/* 1. 首屏 Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* 背景动态 */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-900/40 via-slate-950 to-slate-950" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
         
-        <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -210,10 +204,10 @@ const HomePage = () => {
             <span className="inline-block py-1 px-3 rounded-full bg-white/5 border border-white/10 text-indigo-400 text-sm font-medium mb-6">
               ✨ 下一代创意设计体验
             </span>
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 whitespace-pre-line bg-clip-text text-transparent bg-gradient-to-r from-white via-indigo-200 to-slate-400 h-[1.2em] md:h-auto">
+            <h1 className="text-7xl md:text-9xl font-bold leading-tight mb-8 whitespace-pre-line text-white h-[1.2em] md:h-auto">
               {heroText}<span className="animate-pulse">|</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-lg md:text-2xl text-slate-400 mb-12 max-w-3xl mx-auto leading-relaxed">
               AI 赋能创作，人类精雕细琢<br/>视觉设计的未来，从这里开始
             </p>
           </motion.div>
@@ -222,24 +216,22 @@ const HomePage = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            className="flex flex-col sm:flex-row gap-5 justify-center"
           >
             <button 
               onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-semibold transition-all hover:scale-105 shadow-[0_0_30px_rgba(99,102,241,0.3)] flex items-center justify-center gap-2"
+              className="px-10 py-5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold text-lg transition-all hover:scale-105 shadow-[0_0_30px_rgba(99,102,241,0.3)] flex items-center justify-center gap-2"
             >
-              查看作品 <ArrowRight size={18} />
+              查看作品 <ArrowRight size={20} />
             </button>
             <button 
               onClick={() => navigate('/contact')}
-              className="px-8 py-4 bg-transparent border border-white/20 hover:bg-white/5 text-white rounded-full font-semibold transition-all hover:scale-105"
+              className="px-10 py-5 bg-transparent border-2 border-white/20 hover:bg-white/5 text-white rounded-full font-bold text-lg transition-all hover:scale-105"
             >
               联系我们
             </button>
           </motion.div>
         </div>
-
-        {/* 滚动提示 */}
         <motion.div 
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
@@ -276,12 +268,11 @@ const HomePage = () => {
             ))}
           </div>
           
-          {/* AI 技术栈 */}
           <div className="text-center">
             <p className="text-sm text-slate-500 mb-6 uppercase tracking-widest">Powered By</p>
-            <div className="flex flex-wrap justify-center gap-4 text-slate-400 text-sm font-medium">
-              {['Midjourney', 'DALL·E 3', 'Stable Diffusion', 'Adobe Firefly', 'Runway', 'ChatGPT', 'Claude'].map(tech => (
-                <span key={tech} className="px-4 py-2 rounded-full border border-white/10 bg-white/5">{tech}</span>
+            <div className="flex flex-wrap justify-center gap-4 text-slate-400 text-sm font-medium max-w-4xl mx-auto">
+              {['Gemini', 'Lovart', 'LiblibAI', 'Midjourney', 'DALL·E 3', 'Stable Diffusion', 'Adobe Firefly', 'Runway', 'ChatGPT', 'Claude', 'Link Fox AI'].map(tech => (
+                <span key={tech} className="px-4 py-2 rounded-full border border-white/10 bg-white/5 hover:border-indigo-500/50 hover:text-white transition-colors">{tech}</span>
               ))}
             </div>
           </div>
@@ -331,7 +322,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 4. AI 优势 (Grid) */}
+      {/* 4. AI 优势 */}
       <section className="py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4">
            <div className="text-center mb-16">
@@ -355,7 +346,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 5. 作品集 (空状态) */}
+      {/* 5. 作品集 */}
       <section id="portfolio" className="py-24 bg-slate-900/30">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-12">
@@ -386,8 +377,30 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 6. FAQ Section */}
-      <section className="py-24 bg-slate-950">
+      {/* 修改点：这里原本是客户评价，现在替换成了合作流程 */}
+      <section id="process" className="py-24 bg-slate-950">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-bold text-center mb-16">合作流程</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+            {[
+              { step: '01', title: '需求沟通', time: '30min - 1h', desc: '详细沟通项目需求与期望' },
+              { step: '02', title: '方案策划', time: '1-2 工作日', desc: 'AI 辅助生成多套创意方案' },
+              { step: '03', title: '设计执行', time: '3-7 工作日', desc: '人工精修优化，完美落地' },
+              { step: '04', title: '交付验收', time: '1 工作日', desc: '完整交付源文件及规范' },
+            ].map((proc, idx) => (
+              <div key={idx} className="relative p-6 rounded-xl bg-slate-900/50 border border-white/10 hover:border-indigo-500/30 transition-colors">
+                <div className="text-5xl font-bold text-white/5 mb-4">{proc.step}</div>
+                <h3 className="text-lg font-bold mb-2">{proc.title}</h3>
+                <div className="text-indigo-400 text-xs font-mono mb-2">{proc.time}</div>
+                <p className="text-slate-400 text-sm">{proc.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FAQ */}
+      <section className="py-24 bg-slate-900/30">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">常见问题</h2>
           <div className="space-y-4">
@@ -405,7 +418,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* 7. 底部 CTA */}
+      {/* 8. 底部 CTA */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-900 to-purple-900 opacity-50" />
         <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
@@ -444,7 +457,6 @@ const ContactPage = () => {
 
   return (
     <div className="bg-slate-950 text-slate-100 min-h-screen font-sans pt-20">
-      {/* Contact Hero */}
       <section className="py-20 px-4 text-center bg-slate-900/50">
         <h1 className="text-4xl md:text-6xl font-bold mb-6">让我们一起创造</h1>
         <p className="text-xl text-slate-400 max-w-2xl mx-auto">
@@ -452,10 +464,8 @@ const ContactPage = () => {
         </p>
       </section>
 
-      {/* Contact Cards */}
       <section className="py-12 max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Wechat Card */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -476,11 +486,16 @@ const ContactPage = () => {
             </div>
           </motion.div>
           
-          {/* Other Cards */}
           {[
             { icon: Mail, title: '业务合作', val: '2097726768@qq.com', action: '发送邮件', link: 'mailto:2097726768@qq.com' },
             { icon: Globe, title: '官方网站', val: 'haike-ai.zeabur.app', action: '访问网站', link: '#' },
-            { icon: MapPin, title: '公司地址', val: '中国 · 深圳市南山区', action: '查看地图', link: '#' },
+            { 
+              icon: MapPin, 
+              title: '公司地址', 
+              val: '中国 · 深圳市南山区', 
+              action: '查看地图', 
+              link: 'https://www.google.com/maps/place/Nanshan,+Shenzhen,+Guangdong+Province,+China/@22.5323869,113.8479532,12z' 
+            },
           ].map((card, idx) => (
              <motion.div 
                 key={idx}
@@ -492,7 +507,7 @@ const ContactPage = () => {
                 <card.icon className="w-8 h-8 text-indigo-500 mb-4" />
                 <h3 className="text-lg font-bold mb-2">{card.title}</h3>
                 <p className="text-slate-400 text-sm mb-6">{card.val}</p>
-                <a href={card.link} className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
+                <a href={card.link} target="_blank" rel="noopener noreferrer" className="text-sm font-semibold text-indigo-400 hover:text-indigo-300 flex items-center gap-1">
                   {card.action} <ArrowRight size={14} />
                 </a>
              </motion.div>
@@ -500,7 +515,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* Team Section */}
       <section className="py-24 bg-slate-950">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
@@ -539,28 +553,6 @@ const ContactPage = () => {
                   </div>
                 </div>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-24 bg-slate-900/30">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-16">合作流程</h2>
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            {[
-              { step: '01', title: '需求沟通', time: '30min - 1h', desc: '详细沟通项目需求与期望' },
-              { step: '02', title: '方案策划', time: '1-2 工作日', desc: 'AI 辅助生成多套创意方案' },
-              { step: '03', title: '设计执行', time: '3-7 工作日', desc: '人工精修优化，完美落地' },
-              { step: '04', title: '交付验收', time: '1 工作日', desc: '完整交付源文件及规范' },
-            ].map((proc, idx) => (
-              <div key={idx} className="relative p-6 rounded-xl bg-slate-950 border border-white/10">
-                <div className="text-5xl font-bold text-white/5 mb-4">{proc.step}</div>
-                <h3 className="text-lg font-bold mb-2">{proc.title}</h3>
-                <div className="text-indigo-400 text-xs font-mono mb-2">{proc.time}</div>
-                <p className="text-slate-400 text-sm">{proc.desc}</p>
-              </div>
             ))}
           </div>
         </div>
